@@ -43,9 +43,9 @@
   <h1>台北市降雨淹水模擬圖</h1>
   <p>資料來源: <a target="_blank" href="http://data.taipei/opendata/datalist/datasetMeta?oid=fa1e8012-ebb4-473b-888e-97f9a9ce365e">臺北市降雨淹水模擬圖</a></p>
   <p>
-    <label><input class="default" type="radio" name="rain" value="78" checked>78.8 mm/hr </label>
+    <label><input type="radio" name="rain" value="78">78.8 mm/hr </label>
     <label><input type="radio" name="rain" value="100">100 mm/hr </label>
-    <label><input type="radio" name="rain" value="130">130 mm/hr </label> 降雨條件下之可能淹水範圍及深度
+    <label><input type="radio" name="rain" value="130" checked>130 mm/hr </label> 降雨條件下之可能淹水範圍及深度
   </p>
   <p>
     淹水深度(m):
@@ -137,10 +137,11 @@
         w = $.when(d1, d2, d3);
 
       w.done(function(geo) {
-        $('input[name="rain"].default').prop('checked', true);
+        // $('input[name="rain"].default').prop('checked', true);
+
         dataMap.setMap(null);
         dataMap = new google.maps.Data();
-        dataMap.addGeoJson(geoObj.d1);
+        dataMap.addGeoJson(geoObj.d3);
         dataMap.setMap(map);
 
         dataMap.setStyle(function(feature) {
